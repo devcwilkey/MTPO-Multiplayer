@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Website</title>
+    <!-- Reset User Agent Defaults -->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Firebase UI CSS-->
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <!-- Load custom CSS for overrides as needed-->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Default Navbar \ Title Bar -->
+    <header class="mb-3">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+                <div class="row w-100">
+                    <div class="col-12 col-md-10 offset-md-1 col-xl-12 offset-xl-0">
+                        <span class="navbar-brand h1">Mike Tyson's Punch Out: Multiplayer</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+        
+    <!-- The surrounding HTML is left untouched by FirebaseUI.
+        Your app may use that space for branding, controls and other customizations.-->
+
+    <div class="container" id="gameArea">
+        <div class="row">
+            <div class="col-6 border p-2">
+                <div class="container" id="formCharacter">
+                    <label id="characterName" class="mr-1">Type a Character Name:</label>
+                    <input type="text" class="p-1" id="formCharacterName">
+                    <btn id="setName" class="btn btn-info p-1 ml-2"><span>Set Name</span></btn>
+                </div>
+                <!-- Your Character Details -->
+                <div class="card" id="characterCard">
+                    <div class="card-header">
+                        <h6 id="actualName"></h6>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 mt-3 p-0">
+                <div class="card bg-light">
+                    <div class="card-header">
+                        <div class="row m-0 p-0">
+                            <div class="col-6">
+                                <h5 class="m-0 p-0">In-Game Trash Talking Chat</h5>
+                                <p class="m-0 p-0 text-strong text-danger"><strong>*chat messages are unfiltered</strong></p>
+                            </div>
+                            <div class="col-6 pt-3 align-self-end">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="msgBox"># of Msgs</span>
+                                    </div>
+                                    <input id="numofChatMessages" class="p-1 text-center" type="number" name="numofMessages" min="5" max="25" step="5" value="10">
+                                    <btn id="theChatButton"></btn>
+                                </div>                          
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-2" id="inGameChat">
+                        <div class="container p-0 m-0">
+                            <div class="container p-0 m-0">
+                                <div class="row">
+                                    <div class="card mx-1 my-1 mr-3 bg-info text-white">
+                                        <div class="card-body px-2 py-0">
+                                            <span><strong>Tim</strong></span>
+                                            <span><small>  |  07:12  |  </small></span>
+                                            <span>Your Mom said to Knock you the Fuck out and then I can Knock her the Fuck Up!!!</span>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-end">
+                                    <div class="card mx-1 my-1 ml-3">
+                                        <div class="card-body px-2 py-0">
+                                            <span>Yo! You really suck at Rock Paper Scissor.  You never seem to throw Rock and I can pretty much predict when you are going to throw Paper.</span>
+                                            <span><small>  |  07:13  |  </small></span>
+                                            <span><strong>Stan</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-end">
+                                    <div class="card mx-1 my-1 ml-3">
+                                        <div class="card-body px-2 py-0">
+                                            <span>HAHAHHA - Beat your Sorry A$$ Again!</span>
+                                            <span><small>  |  07:14  |  </small></span>
+                                            <span><strong>Stan</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="msgBox">Message</span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="...." aria-label="messageToBeSent" aria-describedby="messageToBeSent">
+                                        <button id="sendMessage" class="btn btn-primary p-1">Send Message</button>
+                                    </div>                                                                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Jquery SDK from CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Loading Moment SDK from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- Loading Bootstrap required SDK from CDN -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Loading Firebase App SDK from CDN -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <!-- Loading Firebase Authentication SDK from CDN -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-auth.js"></script>
+    <!-- Loading Firebase Store SDK from CDN -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-firestore.js"></script>
+    <!-- Loading Firebase Database SDK from CDN -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+    <!-- Loading Firebase UI SDK from CDN -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="assets/javascript/init-firebase.js"></script>
+    <script src="assets/javascript/app.js"></script>
+</body>
+</html>
+
+
+
+
